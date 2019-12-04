@@ -1,4 +1,3 @@
-
 import tensorflow as tf
 from tensorflow.python.keras import backend as K
 from tensorflow.python.keras.layers import Layer
@@ -36,8 +35,8 @@ class FM(Layer):
                 "Unexpected inputs dimensions %d, expect to be 3 dimensions"
                 % (K.ndim(inputs)))
 
-        concated_embeds_value = inputs
         # concated_embeds_value = weight * x
+        concated_embeds_value = inputs
 
         square_of_sum = tf.square(tf.reduce_sum(
             concated_embeds_value, axis=1, keep_dims=True))
