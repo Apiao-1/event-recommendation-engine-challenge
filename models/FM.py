@@ -4,6 +4,7 @@ from tensorflow.python.keras.layers import Layer
 
 
 class FM(Layer):
+
     """Factorization Machine models pairwise (order-2) feature interactions
      without linear term and bias.
 
