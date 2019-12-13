@@ -19,7 +19,7 @@ for nclust, key in cluster_names:
         if count % 10000 == 0:
             km.partial_fit(X)
             X = None
-            print count
+            print(count)
     
     kms[key] = km 
     

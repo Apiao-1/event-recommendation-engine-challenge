@@ -4,6 +4,8 @@ import pandas as pd
 
 
 user_info_file = pd.read_csv("users.csv")
+
+# 将uid与location对应 {'tokens': ['Medan', 'Indonesia']}
 loc_dict = {}
 for user in user_info_file.iterrows():
     user = user[1]
@@ -30,9 +32,9 @@ for user in user_info_file.iterrows():
             'tokens': filtered,
         }
 
-loc_dict2 = {}
+loc_dict2 = {} # 将eid与location对应，city， state，lat, lag
 chunks = pd.read_csv("events.csv", iterator=True, chunksize=10000)
-latlngdict = {}
+latlngdict = {} # 将经纬度对应到具体的city, country, state
 count = 0
 for chunk in chunks:
     for e in chunk.iterrows():
@@ -73,6 +75,7 @@ for chunk in chunks:
         loc_dict2[eid] = d
 
 # approximate coordinates a little, for faster search
+# 将经纬度取整
 latlngaprox = {}
 for coords, l in latlngdict.iteritems():
     lat = int(coords[0] * 5) / 5.0
